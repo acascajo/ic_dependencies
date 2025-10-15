@@ -28,13 +28,17 @@ cd tmp
 # Download and installation
 for REPO in "${REPOS[@]}"; do
   NAME=$(basename "$REPO" .git)
+  echo ""
   echo "---- Clonning $NAME..."
+  echo ""
 
-  # Clonar o actualizar si ya existe
+  # Clone
   git clone "$REPO"
   cd $NAME
 
+  echo ""
   echo "---- Installing $NAME..."
+  echo ""
 
   if [ "$NAME" == "papi" ]; then
     cd src
@@ -43,7 +47,9 @@ for REPO in "${REPOS[@]}"; do
   if [ "$NAME" == "hiredis" ]; then
     make install PREFIX=$INSTALL_DIR/
     cd ..
+    echo ""
     echo "---- $NAME completed"
+    echo ""
     continue
   fi
   
@@ -55,7 +61,9 @@ for REPO in "${REPOS[@]}"; do
         -DINSTALL_PKGCONFIG_DIR:PATH=lib/pkgconfig \
         && make && make install
     cd ..
+    echo ""
     echo "---- $NAME completed"
+    echo ""
     continue
   fi
 
@@ -87,7 +95,9 @@ for REPO in "${REPOS[@]}"; do
   fi
 
   cd ..
+  echo ""
   echo "---- $NAME completed"
+  echo ""
 done
 
 cd $CDIR
