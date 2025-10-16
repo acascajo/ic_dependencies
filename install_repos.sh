@@ -1,9 +1,10 @@
 #!/bin/bash
 set -e  
 
+# Set home directory to wherever you want
 HOME=$PWD/..
 echo "User's home set to $HOME"
-sleep 2
+sleep 5
 
 # Repository list
 REPOS=(
@@ -14,7 +15,7 @@ REPOS=(
   "https://github.com/json-c/json-c.git"
 )
 
-# Current dir
+# Current dir (to return later)
 CDIR=$(pwd)
 
 # PREFIX
@@ -98,6 +99,7 @@ for REPO in "${REPOS[@]}"; do
   echo ""
   echo "---- $NAME completed"
   echo ""
+
 done
 
 cd $CDIR
